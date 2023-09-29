@@ -1,0 +1,20 @@
+{
+  "name": "synpress-repro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@metamask/test-dapp": "^7.0.1"
+  },
+  "devDependencies": {
+    "@synthetixio/synpress": "3.7.2-beta.7",
+    "cypress": "12.17.3",
+    "env-cmd": "^10.1.0",
+    "start-server-and-test": "^2.0.0"
+  },
+  "scripts": {
+    "cypress:run": "env-cmd -f .env.e2e cypress run --browser chrome --headed",
+    "start:server": "serve node_modules/@metamask/test-dapp/dist -p 3000",
+    "test": "start-server-and-test 'yarn start:server' http-get://localhost:3000 'yarn cypress:run'"
+  }
+}
